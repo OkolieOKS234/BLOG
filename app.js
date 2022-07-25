@@ -41,7 +41,7 @@ app.get("/posts/:postName", (req, res) => {
   posts.forEach((post) => {
     let storedTitle = _.lowerCase(post.title);
     if (storedTitle === requestedParams) {
-      res.render("/post", {
+      res.render("post", {
         title: post.title,
         body: post.content,
       });
@@ -53,8 +53,10 @@ app.get("/posts/:postName", (req, res) => {
 
 // post
 app.post("/", (req, res) => {
+  let length = 100;
   let blogtitle = req.body.postTitle;
   let blogBody = req.body.postBody;
+
   const post = {
     title: blogtitle,
     content: blogBody,
